@@ -1,7 +1,12 @@
 # Simple pygame program
+from Enemy import Enemy
+from Player import Player
+
 
 # Import and initialize the pygame library
 import pygame
+enemy=Enemy()
+player=Player()
 pygame.init()
 
 # Set up the drawing window
