@@ -42,7 +42,7 @@ enemyX_change=[]
 enemyY_change=[]
 num_of_enemies=7
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('enemy.png'))
+    enemyImg.append(pygame.image.load('space_invader.png'))
     enemyX.append(random.randint(0,735))
     enemyY.append(random.randint(50,150))
     # enemyX_change_value.append(1)
@@ -58,7 +58,15 @@ bulletY=480
 bulletX_change=0
 bulletY_change=2
 bullet_state="ready"
-score=0
+score_value=0
+font=pygame.font.Font('freesansbold.ttf',32)
+textX=10
+textY=10
+
+def show_score(x,y):
+    score=font.render("Score : "+ str(score_value),True,(255,255,255))
+    screen.blit(score,(x,y))
+
 def player(x,y):
     screen.blit(playerImg,(x,y))
 
@@ -79,7 +87,7 @@ def isCollision(enemyX,enemyY,bulletX,bulletY):
         return True
     else:
         return False
-# def changeEnemyPosition():
+# def changeEnemyPosition():=
     
 # Run until the user asks to quit
 running = True
@@ -129,10 +137,14 @@ while running:
             print("collision happened")
             bulletY=480
             bullet_state="ready"
-            score+=1
-            print(score)
-            enemyX[i]=random.randint(0,735)
-            enemyY[i]=random.randint(50,150)
+            score_value+=1
+            print(score_value)
+            enemyX[i]=900
+            enemyY[i]=250
+            
+            # enemyX[i]=random.randint(0,735)
+            # enemyY[i]=random.randint(50,150)
+            
 
         enemy(enemyX[i],enemyY[i],i)
 
@@ -147,7 +159,7 @@ while running:
    
 
     player(playerX,playerY)
-    
+    show_score(textX,textY)
     # Flip the display
     pygame.display.update()
 
