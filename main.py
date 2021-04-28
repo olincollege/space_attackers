@@ -2,6 +2,7 @@
 # Import and initialize the pygame library
 import pygame
 import random
+import math
 # Simple pygame program
 # from enemy import Enemy
 # from player import Player
@@ -14,6 +15,9 @@ pygame.init()
 
 # Set up the drawing window
 screen = pygame.display.set_mode([800, 600])
+
+clock = pygame.time.Clock()
+clock.tick(60)
 #Title and icon
 pygame.display.set_caption("Space Invaders")
 icon = pygame.image.load('ufo.png')
@@ -33,7 +37,8 @@ playerX_change=0
 enemyImg=pygame.image.load('enemy.png')
 enemyX=random.randint(0,800)
 enemyY=random.randint(50,150)
-enemyX_change=2
+enemyX_change_value = 0.1
+enemyX_change=enemyX_change_value
 enemyY_change=40
 
 #Bullets
@@ -42,8 +47,8 @@ enemyY_change=40
 bulletImg=pygame.image.load('enemy.png')
 bulletX=0
 bulletY=480
-bulletX_change=4
-bulletY_change=40
+bulletX_change=0
+bulletY_change=0.8
 bullet_state="ready"
 
 def player(x,y):
@@ -51,6 +56,9 @@ def player(x,y):
 
 def enemy(x,y):
     screen.blit(enemyImg,(x,y))
+
+def has_Collided(enemyX, enemyY, bulletX, bulletY):
+    distance = math.sqrt((math.pow(enemyX-bulletX,2)) + (math.pow(enemyY-bulletY,2)))
 
 def fire_bullet(x,y):
     print("pressed")
@@ -73,9 +81,11 @@ while running:
             if event.key==pygame.K_LEFT:
                 playerX_change =-0.3
             if event.key==pygame.K_RIGHT:
-               playerX_change =0.3
+                playerX_change =0.3
             if event.key==pygame.K_SPACE:
-               fire_bullet(playerX,bulletY)
+                if bullet_state == "ready":
+                    bulletX = playerX
+                    fire_bullet(bulletX,bulletY)
 
         if event.type== pygame.KEYUP:
             if event.key==pygame.K_LEFT or event.key==pygame.K_RIGHT:
@@ -91,16 +101,19 @@ while running:
     #enemy mobement
     enemyX+=enemyX_change
     if enemyX<=0:
-        enemyX_change=2
+        enemyX_change=enemyX_change_value
         enemyY+=enemyY_change
     elif enemyX>=736:
-         enemyX_change=-2
+         enemyX_change=-enemyX_change_value
          enemyY+=enemyY_change
 
-    # # BUllet Movement
+    # # Bullet Movement
+    if bulletY <= 0:
+        bulletY = 480
+        bullet_state = "ready"
     if bullet_state is "fire":
-       fire_bullet(playerX,bulletY)
-       bulletY-=bulletY_change
+        fire_bullet(bulletX,bulletY)
+        bulletY-=bulletY_change
 
     player(playerX,playerY)
     enemy(enemyX,enemyY)
