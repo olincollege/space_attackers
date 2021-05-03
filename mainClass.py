@@ -4,7 +4,7 @@ import pygame
 import random
 import math
 from enemy import Enemy
-from player import Player
+from player import Player, Spaceship
 from score import Score
 from bullet import Bullets
 pygame.init()
@@ -26,8 +26,10 @@ def main():
     background=pygame.image.load('background.png')
     background = pygame.transform.scale(background, (1000, 700))
 
-    player=Player()
-    enemy=Enemy()
+    enemySpaceship = Spaceship('space_invader.png')
+    playerSpaceship = Spaceship('space-invaders.png')
+    player=Player(playerSpaceship)
+    enemy=Enemy(enemySpaceship)
     bullet=Bullets()
     score=Score()
 

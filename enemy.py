@@ -2,18 +2,20 @@
 import pygame
 import random
 import math
+from player import Spaceship
 
 pygame.init()
 
 # Set up the drawing window
 screen = pygame.display.set_mode([800, 600])
 
-class Enemy:
+class Enemy(Spaceship):
     """
     This class that takes an instance of a Enemy as a parameter and stores it 
     as a private instance attribute.
     """
-    def __init__(self):
+    def __init__(self, spaceship):
+        self.spaceship = spaceship
         self.enemyImg=[]
         self.enemyX=[]
         self.enemyY=[]
@@ -22,7 +24,7 @@ class Enemy:
         self.enemyY_change=[]
         self.num_of_enemies=7
         for i in range(self.num_of_enemies):
-            self.enemyImg.append(pygame.image.load('space_invader.png'))
+            self.enemyImg.append(self.spaceship.representation())
             self.enemyX.append(random.randint(0,735))
             self.enemyY.append(random.randint(50,150))
             self.enemyX_change.append(4)
