@@ -37,7 +37,7 @@ playerX_change=0
 enemyImg=[]
 enemyX=[]
 enemyY=[]
-enemyX_change_value = []
+enemyX_change_value = 1
 enemyX_change=[]
 enemyY_change=[]
 num_of_enemies=7
@@ -46,7 +46,7 @@ for i in range(num_of_enemies):
     enemyX.append(random.randint(0,735))
     enemyY.append(random.randint(50,150))
     # enemyX_change_value.append(1)
-    enemyX_change.append(4)
+    enemyX_change.append(enemyX_change_value)
     enemyY_change.append(40)
 
 #Bullets
@@ -125,10 +125,10 @@ while running:
     for i in range(num_of_enemies):
         enemyX[i] += enemyX_change[i]
         if enemyX[i]<=0:
-            enemyX_change[i]=4
+            enemyX_change[i]=enemyX_change_value
             enemyY[i]+=enemyY_change[i]
         elif enemyX[i]>=736:
-            enemyX_change[i]=-4
+            enemyX_change[i]=-enemyX_change_value
             enemyY[i]+=enemyY_change[i]
 
          #Collision
