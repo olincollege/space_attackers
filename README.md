@@ -10,11 +10,11 @@ THe other required dependency is the `random` library.To install it run  `$ pip 
 
 # File Structure
 Our file structure consists of five major files and image assets
-* mainClass.py : This file runs the game
-* player.py   :This file contains the player Class
-* score.py    : This file contains the score Class 
-* spaceship.py: This file contains the spaceship Class
-* enemy.py    : This file contains the enemy Class
+* `mainClass.py` : This file runs the game
+* `player.py`   :This file contains the player Class
+* `score.py`    : This file contains the score Class 
+* `spaceship.py`: This file contains the spaceship Class
+* `enemy.py`    : This file contains the enemy Class
 * assets      : This folder contains all the assets in the game
 
 # Assets
