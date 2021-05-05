@@ -21,7 +21,7 @@ def main():
     clock.tick(60)
     # #Title and icon
     pygame.display.set_caption("Space Invaders")
-    icon = pygame.image.load('ufo.png')
+    icon = pygame.image.load('assets/space-invaders.png')
     pygame.display.set_icon(icon)
 
     ## Game level
@@ -37,10 +37,10 @@ def main():
         enemies=20
         speed=5
     #backgroundimage
-    background=pygame.image.load('background.png')
+    background=pygame.image.load('assets/background.png')
     background = pygame.transform.scale(background, (1000, 700))
-    enemySpaceship = Spaceship('space_invader.png',speed,enemies)
-    playerSpaceship = Spaceship('space-invaders.png',speed,enemies)
+    enemySpaceship = Spaceship('assets/space_invader.png',speed,enemies)
+    playerSpaceship = Spaceship('assets/space-invaders.png',speed,enemies)
     print(enemySpaceship)
     player=Player(playerSpaceship)
     enemy=Enemy(enemySpaceship)
@@ -82,7 +82,7 @@ def main():
            player.playerX=0
         elif player.playerX>=736:
             player.playerX=736
-        #enemy mobement
+        #enemy movement
         for i in range(enemy.num_of_enemies):
             enemy.enemyX[i] += enemy.enemyX_change[i]
             if enemy.enemyX[i]<=0:
@@ -92,7 +92,7 @@ def main():
                 enemy.enemyX_change[i]=-speed
                 enemy.enemyY[i]+=enemy.enemyY_change[i]
 
-            #Collision
+            #Collision and player killed
             collision=player.isCollision(enemy.enemyX[i],enemy.enemyY[i],bullet.bulletX,bullet.bulletY)
             killed=player.isKilled(enemy.enemyX[i],enemy.enemyY[i],player.playerX,player.playerY) 
             if collision:
@@ -104,7 +104,7 @@ def main():
                 enemy.enemyX[i]=900
                 enemy.enemyY[i]=450
    
-           
+            #CHeck if player has been killed
             if killed:
                print(killed)
                running = False 
@@ -121,12 +121,14 @@ def main():
             bullet.bulletY-=bullet.bulletY_change
         
         
-
+        
         player.player(player.playerX,player.playerY)
+        #show the score as game is played
         score.show_score(score.textX,score.textY)
+        #if player has killed six enemies generage new ones
         if score.score_value %8 ==0:
            print("score-val")
-           enemySpaceship = Spaceship('space_invader.png',speed,enemies)
+           enemySpaceship = Spaceship('assets/space_invader.png',speed,enemies)
            enemy=Enemy(enemySpaceship)
 
         # Flip the display

@@ -20,7 +20,7 @@ class Player(Spaceship):
         # Set up the drawing window
         
         self.spaceship = spaceship
-        self.playerImg=pygame.image.load('space-invaders.png')
+        self.playerImg=pygame.image.load('assets/space-invaders.png')
         self.playerX=370
         self.playerY=480
         self.playerX_change=0

@@ -13,8 +13,8 @@ class Bullets:
     as a private instance attribute.
     """
     def __init__(self):
-        self.bulletImg=pygame.image.load('bullet.png')
-        self.explosionImg=pygame.image.load('explosion.png')
+        self.bulletImg=pygame.image.load('assets/bullet.png')
+        self.explosionImg=pygame.image.load('assets/explosion.png')
         self.bulletX=0
         self.bulletY=480
         self.bulletX_change=0
