@@ -1,4 +1,3 @@
-# space_attackers
 # Introduction
 This is the repository hosting a space invaders game by Gibson and Conan
 
