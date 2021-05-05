@@ -14,10 +14,11 @@ class Bullets:
     """
     def __init__(self):
         self.bulletImg=pygame.image.load('bullet.png')
+        self.explosionImg=pygame.image.load('explosion.png')
         self.bulletX=0
         self.bulletY=480
         self.bulletX_change=0
-        self.bulletY_change=2
+        self.bulletY_change=4
         self.bullet_state="ready"
         self.font=pygame.font.Font('freesansbold.ttf',32)
         self.textX=10
@@ -31,3 +32,7 @@ class Bullets:
         global bullet_state
         self.bullet_state="fire"
         screen.blit(self.bulletImg,(x+16,y+10 ))
+
+    def explosion(self,x,y):
+        print(x,y)
+        screen.blit(self.explosionImg,(x,y ))

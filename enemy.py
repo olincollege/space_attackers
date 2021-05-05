@@ -2,11 +2,9 @@
 import pygame
 import random
 import math
-from player import Spaceship
+from spaceship import Spaceship
 
 pygame.init()
-
-# Set up the drawing window
 screen = pygame.display.set_mode([800, 600])
 
 class Enemy(Spaceship):
@@ -22,12 +20,12 @@ class Enemy(Spaceship):
         self.enemyX_change_value = []
         self.enemyX_change=[]
         self.enemyY_change=[]
-        self.num_of_enemies=7
+        self.num_of_enemies=spaceship.enemies
         for i in range(self.num_of_enemies):
             self.enemyImg.append(self.spaceship.representation())
             self.enemyX.append(random.randint(0,735))
             self.enemyY.append(random.randint(50,150))
-            self.enemyX_change.append(4)
+            self.enemyX_change.append(self.spaceship.enemy_speed[0])
             self.enemyY_change.append(40)
        
 
@@ -35,4 +33,5 @@ class Enemy(Spaceship):
         """
         Display the enemies on the board
         """
+       
         screen.blit(self.enemyImg[i],(x,y))

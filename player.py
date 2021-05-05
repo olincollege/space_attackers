@@ -3,24 +3,12 @@
 import pygame
 import random
 import math
-
+from spaceship import Spaceship
 pygame.init()
 
-# Set up the drawing window
+
+
 screen = pygame.display.set_mode([800, 600])
-
-# Define a player object by extending pygame.sprite.Sprite
-# The surface drawn on the screen is now an attribute of 'player'
-
-class Spaceship:
-    def __init__(self, Img):
-        self.Img = pygame.image.load(Img)
-
-    def representation(self):
-        """
-        Display the player on the game screen
-        """
-        return self.Img
 
 class Player(Spaceship):
     """
@@ -28,7 +16,9 @@ class Player(Spaceship):
     as a private instance attribute.
     """
     def __init__(self, spaceship):
-        #PLayer
+        #PLayer'
+        # Set up the drawing window
+        
         self.spaceship = spaceship
         self.playerImg=pygame.image.load('space-invaders.png')
         self.playerX=370
@@ -56,3 +46,15 @@ class Player(Spaceship):
             return True
         else:
             return False
+    
+    def isKilled(self,enemyX,enemyY,playerX,playerY):
+        """
+        Detecting collision between the bullets from the player and the enemy
+        """
+        distance=math.sqrt((math.pow
+        (enemyX-playerX,2))+(math.pow(enemyY-playerY,2)))
+        if distance <27:
+            return True
+        else:
+            return False
+    
