@@ -2,6 +2,7 @@
 This is the repository hosting a space invaders game by Gibson and Conan
 
 # GAME
+
 ![game](assets/mass-123.png)
 
 
