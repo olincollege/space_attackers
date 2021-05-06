@@ -1,6 +1,10 @@
 # Introduction
 This is the repository hosting a space invaders game by Gibson and Conan
 
+# GAME
+![game](assets/mass-123.png)
+
+
 # Installation and setup
 
 Running the game uses pygame, which can be installed by running `$ pip install pygame`.
@@ -8,7 +12,7 @@ THe other required dependency is the `random` library.To install it run  `$ pip 
 
 
 # File Structure
-Our file structure consists of five major files and image assets
+Our file structure consists of five major files and imagdise assets
 * `mainClass.py` : This file runs the game
 * `player.py`   :This file contains the player Class
 * `score.py`    : This file contains the score Class 
