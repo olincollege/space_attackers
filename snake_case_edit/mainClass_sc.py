@@ -11,9 +11,10 @@ pygame.init()
 
 def main():
     """
-    Play a game of space invaders
-    """  
-    level=input("What is your level do you want to play(easy,medium,hard)")
+    Play a game of space invaders.
+    """
+    level=input("At what level of difficulty would you like to play? (easy,medium,hard)")
+    
     screen = pygame.display.set_mode([800, 600])
     # Set up the drawing window
 
@@ -39,11 +40,11 @@ def main():
     #backgroundimage
     background=pygame.image.load('assets/background.png')
     background = pygame.transform.scale(background, (1000, 700))
-    enemySpaceship = Spaceship('assets/space_invader.png',speed,enemies)
-    playerSpaceship = Spaceship('assets/space-invaders.png',speed,enemies)
-    print(enemySpaceship)
-    player=Player(playerSpaceship)
-    enemy=Enemy(enemySpaceship)
+    enemy_spaceship = Spaceship('assets/space_invader.png',speed,enemies)
+    player_spaceship = Spaceship('assets/space-invaders.png',speed,enemies)
+    print(enemy_spaceship)
+    player=Player(player_spaceship)
+    enemy=Enemy(enemy_spaceship)
     bullet=Bullets()
     score=Score(level)
     print("SCORE",score)
@@ -62,74 +63,74 @@ def main():
                 running = False
             if event.type== pygame.KEYDOWN:
                 if event.key==pygame.K_LEFT:
-                    player.playerX_change =-2
+                    player.player_x_change =-2
                 if event.key==pygame.K_RIGHT:
-                    player.playerX_change =2
+                    player.player_x_change =2
                 if event.key==pygame.K_SPACE:
                    
                     if bullet.bullet_state == "ready":
-                        bullet.bulletX = player.playerX
-                        bullet.fire_bullet(bullet.bulletX,bullet.bulletY)
+                        bullet.bullet_x = player.player_x
+                        bullet.fire_bullet(bullet.bullet_x,bullet.bullet_y)
 
             if event.type== pygame.KEYUP:
                 if event.key==pygame.K_LEFT or event.key==pygame.K_RIGHT:
-                   player.playerX_change =0
+                   player.player_x_change =0
             
                 
         #checking for boundaries of spaceship so that ir doesnt go out of bounds
-        player.playerX+=player.playerX_change
-        if player.playerX<=0:
-           player.playerX=0
-        elif player.playerX>=736:
-            player.playerX=736
+        player.player_x+=player.player_x_change
+        if player.player_x<=0:
+           player.player_x=0
+        elif player.player_x>=736:
+            player.player_x=736
         #enemy movement
         for i in range(enemy.num_of_enemies):
-            enemy.enemyX[i] += enemy.enemyX_change[i]
-            if enemy.enemyX[i]<=0:
-                enemy.enemyX_change[i]=speed
-                enemy.enemyY[i]+=enemy.enemyY_change[i]
-            elif enemy.enemyX[i]>=736:
-                enemy.enemyX_change[i]=-speed
-                enemy.enemyY[i]+=enemy.enemyY_change[i]
+            enemy.enemy_x[i] += enemy.enemy_x_change[i]
+            if enemy.enemy_x[i]<=0:
+                enemy.enemy_x_change[i]=speed
+                enemy.enemy_y[i]+=enemy.enemy_y_change[i]
+            elif enemy.enemy_x[i]>=736:
+                enemy.enemy_x_change[i]=-speed
+                enemy.enemy_y[i]+=enemy.enemy_y_change[i]
 
             #Collision and player killed
-            collision=player.isCollision(enemy.enemyX[i],enemy.enemyY[i],bullet.bulletX,bullet.bulletY)
-            killed=player.isKilled(enemy.enemyX[i],enemy.enemyY[i],player.playerX,player.playerY)  
+            collision=player.isCollision(enemy.enemy_x[i],enemy.enemy_y[i],bullet.bullet_x,bullet.bullet_y)
+            killed=player.isKilled(enemy.enemy_x[i],enemy.enemy_y[i],player.player_x,player.player_x) 
             if collision:
                 print("collision happened")
-                bullet.bulletY=480
+                bullet.bullet_y=480
                 bullet.bullet_state="ready"
                 score.score_value+=1
-                bullet.explosion(enemy.enemyX[i],enemy.enemyY[i])
-                enemy.enemyX[i]=900
-                enemy.enemyY[i]=450
+                bullet.explosion(random.randint(100,735),random.randint(50,150))
+                enemy.enemy_x[i]=900
+                enemy.enemy_y[i]=450
    
             #CHeck if player has been killed
             if killed:
                print(killed)
                running = False 
 
-            enemy.enemy(enemy.enemyX[i],enemy.enemyY[i],i)
+            enemy.enemy(enemy.enemy_x[i],enemy.enemy_y[i],i)
     
 
         # # # Bullet Movement
-        if bullet.bulletY <= 0:
-            bullet.bulletY = 480
+        if bullet.bullet_y <= 0:
+            bullet.bullet_y = 480
             bullet.bullet_state = "ready" 
         if bullet.bullet_state is "fire":
-            bullet.fire_bullet(bullet.bulletX,bullet.bulletY)
-            bullet.bulletY-=bullet.bulletY_change
+            bullet.fire_bullet(bullet.bullet_x,bullet.bullet_y)
+            bullet.bullet_y-=bullet.bullet_y_change
         
         
         
-        player.player(player.playerX,player.playerY)
+        player.player(player.player_x,player.player_y)
         #show the score as game is played
-        score.show_score(score.textX,score.textY)
+        score.show_score(score.text_x,score.text_y)
         #if player has killed six enemies generage new ones
         if score.score_value %8 ==0:
            print("score-val")
-           enemySpaceship = Spaceship('assets/space_invader.png',speed,enemies)
-           enemy=Enemy(enemySpaceship)
+           enemy_spaceship = Spaceship('assets/space_invader.png',speed,enemies)
+           enemy=Enemy(enemy_spaceship)
 
         # Flip the display
         pygame.display.update()
