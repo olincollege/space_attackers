@@ -1,3 +1,4 @@
+
 # Introduction
 This is the repository hosting a space invaders game by Gibson and Conan
 
@@ -5,6 +6,8 @@ This is the repository hosting a space invaders game by Gibson and Conan
 
 ![game](assets/mass-123.png)
 
+# Preview
+![Gif_Space_Trim](https://user-images.githubusercontent.com/50885520/117381100-411c1e80-aea9-11eb-87a5-0caea49eb165.gif)
 
 # Installation and setup
 
@@ -23,3 +26,5 @@ Our file structure consists of five major files and imagdise assets
 
 # Assets
 ALl our assets were drawn from [flaticon](https://www.flaticon.com/)
+
+
