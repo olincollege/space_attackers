@@ -31,12 +31,12 @@ kill your first enemy in the swarm, the game will begin.
 
 # File Structure
 Our file structure consists of five major files and flaticon assets.
-* `mainClass.py` : This file runs the game
+* `main_class.py` : This file runs the game
 * `player.py`   :This file contains the player Class
 * `score.py`    : This file contains the score Class 
 * `spaceship.py`: This file contains the spaceship Class
 * `enemy.py`    : This file contains the enemy Class
-* assets      : This folder contains all the assets in the game
+*  assets/      : This folder contains all the assets in the game
 
 # Assets
 All our assets were drawn from [flaticon](https://www.flaticon.com/).
