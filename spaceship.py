@@ -1,4 +1,7 @@
-  
+"""
+Define the Spaceship class.
+"""
+
 # Import and initialize the pygame library
 import pygame
 pygame.init()
@@ -12,21 +15,23 @@ class Spaceship:
     """
     This class defines the attributes of the enemy.
     """
-    def __init__(self, Img,speed,enemies):
-        self.Img = pygame.image.load(Img)
-        self.enemy_speed=speed,
+    def __init__(self, image,speed,enemies):
+        self.image = pygame.image.load(image)
+        self.enemy_speed=(speed,)
         self.enemies=enemies
 
     def representation(self):
         """
-        Display the player on the game screen
+        Display the player on the game screen.
         """
-        return self.Img
+        return self.image
+
     def __repr__(self):
 
         return f"The {self.enemy_speed[0]} and number of {self.enemies}"
+
     def speed(self):
         """
-        Rerurn the speed
+        Return the speed.
         """
         return self.speed

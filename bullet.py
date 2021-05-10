@@ -1,8 +1,9 @@
+"""
+Define the Bullets class.
+"""
 
 # Import and initialize the pygame library
 import pygame
-import random
-import math
 pygame.init()
 
 # Set up the drawing window
@@ -13,26 +14,25 @@ class Bullets:
     as a private instance attribute.
     """
     def __init__(self):
-        self.bulletImg=pygame.image.load('assets/bullet.png')
-        self.explosionImg=pygame.image.load('assets/explosion.png')
-        self.bulletX=0
-        self.bulletY=480
-        self.bulletX_change=0
-        self.bulletY_change=4
+        self.bullet_image=pygame.image.load('assets/bullet.png')
+        self.explosion_image=pygame.image.load('assets/explosion.png')
+        self.bullet_x=0
+        self.bullet_y=480
+        self.bullet_x_change=0
+        self.bullet_y_change=4
         self.bullet_state="ready"
         self.font=pygame.font.Font('freesansbold.ttf',32)
-        self.textX=10
-        self.textY=10
-    
+        self.text_x=10
+        self.text_y=10
 
-    def fire_bullet(self,x,y):
+    def fire_bullet(self,coordinate_x,coordinate_y):
         """
         Triggers the firing of the bullet from the player to initiate collision with the enemy
         """
         global bullet_state
         self.bullet_state="fire"
-        screen.blit(self.bulletImg,(x+16,y+10 ))
+        screen.blit(self.bullet_image,(coordinate_x+16,coordinate_y+10 ))
 
-    def explosion(self,x,y):
-        print(x,y)
-        screen.blit(self.explosionImg,(x,y ))
+    def explosion(self,coordinate_x,coordinate_y):
+        print(coordinate_x,coordinate_y)
+        screen.blit(self.explosion_image,(coordinate_x,coordinate_y))

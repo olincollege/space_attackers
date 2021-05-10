@@ -1,60 +1,51 @@
-
+"""
+Define the Player class, inheriting from the Spaceship class.
+"""
 # Import and initialize the pygame library
-import pygame
-import random
 import math
+import pygame
 from spaceship import Spaceship
+
 pygame.init()
-
-
-
 screen = pygame.display.set_mode([800, 600])
 
 class Player(Spaceship):
     """
-    This class that takes an instance of a Enemy as a parameter and stores it 
-    as a private instance attribute.
+    This class takes an instance of spaceship as a parameter and stores it
+    as an instance attribute, and has methods to represent the player on
+    the screen.
     """
     def __init__(self, spaceship):
-        #PLayer'
-        # Set up the drawing window
-        
+        # Initialize the player's spaceship as an inheriting class of
+        # spaceship.
         self.spaceship = spaceship
-        self.playerImg=pygame.image.load('assets/space-invaders.png')
-        self.playerX=370
-        self.playerY=480
-        self.playerX_change=0
-        
+        # Initialize the image and position of the player spaceship.
+        self.player_image=pygame.image.load('assets/space-invaders.png')
+        self.player_x=370
+        self.player_y=480
+        self.player_x_change=0
+
     def __repr__(self):
-        return f'{self.playerX}' 
-          
-    def player(self,x,y):
+        return f'{self.player_x}'
+
+    def player(self,coordinate_x,coordinate_y):
         """
         Display the player on the game screen
         """
-        
-        screen.blit(self.spaceship.representation(),(x,y))
+        screen.blit(self.spaceship.representation(),(coordinate_x,coordinate_y))
 
+def is_collision(enemy_x,enemy_y,bullet_x,bullet_y):
+    """
+    Detecting collision between the bullets from the player and the enemy.
+    """
+    distance=math.sqrt((math.pow
+    (enemy_x-bullet_x,2))+(math.pow(enemy_y-bullet_y,2)))
+    return distance < 27
 
-    def isCollision(self,enemyX,enemyY,bulletX,bulletY):
-        """
-        Detecting collision between the bullets from the player and the enemy
-        """
-        distance=math.sqrt((math.pow
-        (enemyX-bulletX,2))+(math.pow(enemyY-bulletY,2)))
-        if distance <27:
-            return True
-        else:
-            return False
-    
-    def isKilled(self,enemyX,enemyY,playerX,playerY):
-        """
-        Detecting collision between the bullets from the player and the enemy
-        """
-        distance=math.sqrt((math.pow
-        (enemyX-playerX,2))+(math.pow(enemyY-playerY,2)))
-        if distance <27:
-            return True
-        else:
-            return False
-    
+def is_killed(enemy_x,enemy_y,player_x,player_y):
+    """
+    Detecting collision between the bullets from the player and the enemy.
+    """
+    distance=math.sqrt((math.pow
+    (enemy_x-player_x,2))+(math.pow(enemy_y-player_y,2)))
+    return distance < 27
