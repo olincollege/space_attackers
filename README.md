@@ -19,3 +19,5 @@ and it should start an instance of the game. Use the arrow keys to move your shi
 spacebar to shoot, and as soon as you kill your first enemy in the swarm, the game will begin.
 
 ![game](assets/mass-123.png)
+
+## [Link to our website](https://potential-guide-e73735f4.pages.github.io/)
