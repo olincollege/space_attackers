@@ -2,6 +2,7 @@
 import pytest
 import requests
 from player import Player
+from spaceship import Spaceship
 
 # enemyX=0
 # enemyY=1
@@ -12,30 +13,31 @@ from player import Player
 
 
 DISTANCES=[
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),                   
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),                   
 ]
 
 
 PLAYER_DISTANCES=[
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),
- (0,1,2,1,False),                   
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),
+ (0,1,2,1,True),                   
 ]
-
+playerSpaceship = Spaceship('assets/space-invaders.png',2,7)
+player=Player(playerSpaceship)
 @pytest.mark.parametrize("enemyX,enemyY,bulletX,bulletY,status", DISTANCES)
 def test_collision(enemyX,enemyY,bulletX,bulletY,status):
     """
@@ -48,7 +50,8 @@ def test_collision(enemyX,enemyY,bulletX,bulletY,status):
         bulletY:Y cordinate of the bullet
         status: status of the collission, true or false
     """
-    assert Player.isCollision(enemyX,enemyY,bulletX,bulletY) == status
+
+    assert player.isCollision(enemyX,enemyY,bulletX,bulletY) == status
 @pytest.mark.parametrize("enemyX,enemyY,playerX,playerY,status", PLAYER_DISTANCES)
 def test_isKilled(enemyX,enemyY,playerX,playerY,status):
     """
@@ -62,5 +65,5 @@ def test_isKilled(enemyX,enemyY,playerX,playerY,status):
         playerY:Y cordinate of the player
         status: status of the death, true or false
     """
-    assert Player.isKilled(enemyX,enemyY,playerX,playerY) == status
+    assert player.isKilled(enemyX,enemyY,playerX,playerY) == status
 
