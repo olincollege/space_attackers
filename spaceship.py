@@ -9,6 +9,9 @@ pygame.init()
 # The surface drawn on the screen is now an attribute of 'player'
 
 class Spaceship:
+    """
+    This class defines the attributes of the enemy.
+    """
     def __init__(self, Img,speed,enemies):
         self.Img = pygame.image.load(Img)
         self.enemy_speed=speed,

@@ -28,7 +28,7 @@ the genre.
 ![game](assets/mass-123.png)
 
 Upon running the game, it should give a black screen and a prompt in the
-terminal asking:
+terminal asking you to select the level. Please type in  either of the options giveb `easy` `medium` and `hard`:
 
 # Preview
 ![Gif_Space_Trim](https://user-images.githubusercontent.com/50885520/117381100-411c1e80-aea9-11eb-87a5-0caea49eb165.gif)
