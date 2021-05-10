@@ -1,54 +1,21 @@
+## Space Attackers
+This repository houses a Space Invaders clone using the modules and game
+development tools provided by the pygame library. The goal of the game is
+to kill as many aliens as possible without dying (get the highest score),
+which requires aim using movement of the player's spaceship.
 
-Things to do:
+# Installation and setup
 
-Unique features of your project
-Screenshots or demos of your project
-Installation instructions (or link to the relevant portion of the README)
-Download links for your project
-A link to your project’s GitHub page
-Information about you (to the extent you are comfortable)
-Attribution for any external resources you used
-
-
-
-
-# Introduction
-This is the repository hosting a space invaders game by Gibson and Conan
-
-The goal of the project is to create a Space Invaders clone using the modules
-and game development tools provided by the pygame library. The project will
-follow a Model-View-Controller (MVC) Architecture, with real-time input from
-the player. We chose to make a game in the Arcade Space Shooter genre, as we
-thought that it would not be as often-chosen as something like a platformer
-or isometric RPG, and we were fans of the aesthetic associated with games in
-the genre.
+Running the game uses pygame, which can be installed by running `$ pip install pygame`.
+The other required dependency is the `random` library. To install it run `$ pip install random`.
+With those fulfilled, you should be able to download our code, locate to the space_attackers
+folder as a directory, and run `$ python main_class.py`.
 
 # GAME
 
 ![game](assets/mass-123.png)
 
-Upon running the game, it should give a black screen and a prompt in the
-terminal asking you to select the level. Please type in  either of the options giveb `easy` `medium` and `hard`:
-
-# Preview
-![Gif_Space_Trim](https://user-images.githubusercontent.com/50885520/117381100-411c1e80-aea9-11eb-87a5-0caea49eb165.gif)
-
-# Installation and setup
-
-Running the game uses pygame, which can be installed by running `$ pip install pygame`.
-THe other required dependency is the `random` library.To install it run  `$ pip install random`
-
-
-# File Structure
-Our file structure consists of five major files and imagdise assets
-* `mainClass.py` : This file runs the game
-* `player.py`   :This file contains the player Class
-* `score.py`    : This file contains the score Class 
-* `spaceship.py`: This file contains the spaceship Class
-* `enemy.py`    : This file contains the enemy Class
-* assets      : This folder contains all the assets in the game
-
-# Assets
-ALl our assets were drawn from [flaticon](https://www.flaticon.com/)
-
-
+Upon running the game, it should give a black screen and a prompt in the terminal asking you
+to select the level. Please type in either of the options given: `easy`, `medium`, or `hard`,
+and it should start an instance of the game. Use the arrow keys to move your ship, and the
+spacebar to shoot, and as soon as you kill your first enemy in the swarm, the game will begin.
